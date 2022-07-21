@@ -2,7 +2,7 @@
 <hr>
 
 
-<form>
+<form [formGroup]="miFormulario">
 
 <!-- Radio -->
 <div class="row mb-3">
@@ -16,7 +16,7 @@
           class="form-check-input" 
           type="radio" 
           value="M"
-          name="generoRadio" 
+          formControlName="genero"
           id="radioMasculino">
     
         <label 
@@ -31,8 +31,8 @@
     
         <input 
           class="form-check-input" 
-          type="radio" 
-          name="generoRadio" 
+          type="radio"
+          formControlName="genero"
           id="radioFemenino"
           value="F">
     
@@ -54,7 +54,8 @@
       <div class="form-check form-switch">
         <input 
           class="form-check-input" 
-          type="checkbox" 
+          type="checkbox"
+          formControlName="notificaciones"
           role="switch"
           id="flexSwitchCheckChecked">
 
@@ -79,7 +80,7 @@
         <input
           class="form-check-input" 
           type="checkbox" 
-          value=""
+          formControlName="terminos"
           id="flexCheckDefault">
 
         <label 
@@ -104,7 +105,7 @@
 
 </form>
 
-<!-- <h5>Valor del formulario</h5>
+<h5>Valor del formulario</h5>
 <pre> {{ miFormulario.value | json }} </pre>
 <br>
 
@@ -114,6 +115,6 @@
 
 <h5>Persona</h5>
 <pre> {{ persona | json }} </pre>
-<br>
+<br> 
 
-<pre> Condiciones: </pre> -->
+<pre> Condiciones: </pre> 
