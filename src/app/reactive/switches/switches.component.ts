@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, Validator } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-switches',
@@ -28,7 +28,17 @@ export class SwitchesComponent implements OnInit {
       ...this.persona,
       terminos: true
     })
+
+    this.miFormulario.valueChanges.subscribe( ({ terminos, ...rest }) => {
+      this.persona = rest;
+    } )
+
     
+  }
+
+  guardar() {
+    const formValue = { ...this.miFormulario.value }
+    delete formValue.terminos;    
   }
 
 }

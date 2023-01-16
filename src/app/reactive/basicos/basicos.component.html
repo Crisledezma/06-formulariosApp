@@ -1,27 +1,21 @@
 <h2>Reactivos: Basicos</h2>
-<hr>
+<hr />
 
 <div class="row">
   <div class="col">
-
-    <form
-      (ngSubmit)="guardar()"
-      autocomplete="off"
-      [formGroup]="miFormulario">
-
+    <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
       <!-- Campo de producto -->
       <div class="mb-3 row">
         <label for="" class="col-sm-3 col-form-label">Producto</label>
         <div class="col-sm-9">
-          <input 
+          <input
             type="text"
             class="form-control"
             formControlName="nombre"
-            placeholder="Nombre del Producto">
-          <span 
-            class="form-text text-danger"
-            *ngIf="campoNoValido('nombre')">
-              Debe ser de 3 letras al menos
+            placeholder="Nombre del Producto"
+          />
+          <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+            Debe ser de 3 letras al menos
           </span>
         </div>
       </div>
@@ -30,32 +24,33 @@
       <div class="mb-3 row">
         <label for="" class="col-sm-3 col-form-label">Precio</label>
         <div class="col-sm-9">
-          <input 
+          <input
             type="number"
             formControlName="precio"
             class="form-control"
-            placeholder="Precio del Producto">
-        <span 
-          class="form-text text-danger"
-          *ngIf="campoNoValido('precio')">
-            Debe ser 1 o mayor. 
-        </span>
+            placeholder="Precio del Producto"
+          />
+          <span class="form-text text-danger" *ngIf="campoNoValido('precio')">
+            Debe ser 1 o mayor.
+          </span>
         </div>
       </div>
       <!-- Campo de existencias -->
       <div class="mb-3 row">
         <label for="" class="col-sm-3 col-form-label">Existencias</label>
         <div class="col-sm-9">
-          <input 
+          <input
             type="number"
             formControlName="existencias"
             class="form-control"
-            placeholder="Existencias">
-            <span 
-              class="form-text text-danger"
-              *ngIf="campoNoValido('existencias')">
-                Debe ser 0 o mayor. 
-            </span>
+            placeholder="Existencias"
+          />
+          <span
+            class="form-text text-danger"
+            *ngIf="campoNoValido('existencias')"
+          >
+            Debe ser 0 o mayor.
+          </span>
         </div>
       </div>
 
@@ -63,8 +58,10 @@
         <div class="col">
           <button
             type="submit"
-            class="btn btn-primary float-end">
-            Guardar  
+            class="btn btn-primary float-end"
+            [disabled]="miFormulario.invalid"
+          >
+            Guardar
           </button>
         </div>
       </div>

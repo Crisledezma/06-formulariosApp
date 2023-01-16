@@ -30,7 +30,6 @@ export class DinamicosComponent {
   }
 
   guardar() {
-    
     this.miFormulario.markAllAsTouched();
     if (this.miFormulario.invalid) { return }
     this.miFormulario.reset();
@@ -38,9 +37,7 @@ export class DinamicosComponent {
 
   agregarFavorito() {
     if (this.nuevoFavorito.invalid) { return; }
-    
     this.favoritosArr.push(new FormControl(this.nuevoFavorito.value, Validators.required));
-
     this.nuevoFavorito.reset();
   }
 
