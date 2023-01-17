@@ -29,7 +29,7 @@
             placeholder="Email del Usuario"
           />
           <span *ngIf="campoNoValido('email')" class="form-text text-danger">
-            El correo es obligatorio
+            {{ emailErrorMsg }}
           </span>
         </div>
       </div>
@@ -50,29 +50,37 @@
       </div>
       <!-- Password -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password</label>
+        <label class="col-sm-3 col-form-label">Contraseña</label>
         <div class="col-sm-9">
           <input
+            formControlName="password"
             type="password"
             class="form-control"
             placeholder="Contraseña"
           />
+          <span *ngIf="campoNoValido('password')" class="form-text text-danger">
+            La contraseña debe ser mayor de 6 caracteres
+          </span>
         </div>
       </div>
       <!-- Password 2 -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password 2</label>
+        <label class="col-sm-3 col-form-label">Verificación de Contraseña</label>
         <div class="col-sm-9">
           <input
+            formControlName="passwordVerification"
             type="password"
             class="form-control"
             placeholder="Confirmar contraseña"
           />
+          <span *ngIf="campoNoValido('passwordVerification')" class="form-text text-danger">
+            Las contraseñas deben ser iguales.
+          </span>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">Crear</button>
+          <button [disabled]="miFormulario.pending" type="submit" class="btn btn-primary float-end">Crear</button>
         </div>
       </div>
     </form>
@@ -80,6 +88,10 @@
 </div>
 
 <h2>Form Valid: {{ miFormulario.valid }}</h2>
+<h2>Form Errors: {{ miFormulario.errors | json }}</h2>
+<h2>Form Status: {{ miFormulario.status | json }}</h2>
+<h2>Form Pending: {{ miFormulario.pending | json }}</h2>
+
 <hr>
 <h5>Nombre</h5>
 <pre>{{ miFormulario.controls["nombre"].errors | json }}</pre>
@@ -89,3 +101,9 @@
 <hr>
 <h5>Username</h5>
 <pre>{{ miFormulario.controls["username"].errors | json }}</pre>
+<hr>
+<h5>Contraseña</h5>
+<pre>{{ miFormulario.controls["password"].errors | json }}</pre>
+<hr>
+<h5>Verificación de contraseña</h5>
+<pre>{{ miFormulario.controls["passwordVerification"].errors | json }}</pre>
